@@ -5,16 +5,19 @@ import apiClient from "../../services/apiClient";
 
 export const ProductList = () => {
   const [products, setProducts] = useState([]);
-  // NOTE: useEffect doing loop requests...
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     const result = await apiClient.get("/api/products");
-  //     if (result.data) {
-  //       setProducts(result.data.data);
-  //     }
-  //   }
-  //   fetchData();
-  // }, [products]);
+
+  const fetchData = async () => {
+    const result = await apiClient.get("/api/products");
+    if (result.data) {
+      setProducts(products.concat(result.data.data));
+    }
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, [] //empty array helps to stop useEffect keeps looping
+  );
+
   return (
     <div style={{ padding: "0.5em" }}>
       <Grid
