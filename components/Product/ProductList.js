@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { ProductItem } from "./ProductItem";
 import Grid from "@material-ui/core/Grid";
+import apiClient from "../../services/apiClient";
 
 export const ProductList = () => {
+  const [products, setProducts] = useState([]);
+  // NOTE: useEffect doing loop requests...
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const result = await apiClient.get("/api/products");
+  //     if (result.data) {
+  //       setProducts(result.data.data);
+  //     }
+  //   }
+  //   fetchData();
+  // }, [products]);
   return (
     <div style={{ padding: "0.5em" }}>
       <Grid
@@ -11,8 +23,8 @@ export const ProductList = () => {
         justify="flex-start"
         alignItems="flex-start"
       >
-        {[1, 2, 3, 4, 5, 6, 7].map((i) => {
-          return <ProductItem key={i} />;
+        {products.map((product, i) => {
+          return <ProductItem key={i} product={product} />;
         })}
       </Grid>
     </div>

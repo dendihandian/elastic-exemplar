@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 export const AppHeader = (props) => {
   const classes = useStyles();
   return (
-    <div className={classes.root}>
+    <div>
       <AppBar position="static">
         <Toolbar>
           <IconButton
