@@ -1,0 +1,3 @@
+### Product List (Page=1)
+GET http://elastic:changeme@localhost:9200/store/product/_search HTTP/1.1
+content-type: application/json

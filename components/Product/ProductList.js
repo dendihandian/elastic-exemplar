@@ -4,12 +4,19 @@ import Grid from "@material-ui/core/Grid";
 import apiClient from "../../services/apiClient";
 
 export const ProductList = () => {
-  const [products, setProducts] = useState([]);
-
+  const [state, setState] = useState({
+    products: [],
+    total: 0,
+  });
   const fetchData = async () => {
-    const result = await apiClient.get("/api/products");
+    const result = await apiClient.get("/api/products", {
+      from: state.products.length
+    });
     if (result.data) {
-      setProducts(products.concat(result.data.data));
+      setState({
+        products: state.products.concat(result.data.data),
+        total: result.data.metadata.total ?? state.total,
+      });
     }
   }
 
@@ -26,7 +33,7 @@ export const ProductList = () => {
         justify="flex-start"
         alignItems="flex-start"
       >
-        {products.map((product, i) => {
+        {state.products.map((product, i) => {
           return <ProductItem key={i} product={product} />;
         })}
       </Grid>

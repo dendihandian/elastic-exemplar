@@ -1,3 +1,4 @@
+// import {get} from 'lodash';
 import elasticClient from "../../services/elasticClient";
 
 export default async (req, res) => {
@@ -11,6 +12,9 @@ export default async (req, res) => {
     res.statusCode = 200;
     res.json({
       data: products,
+      metadata: {
+        total: result.data.hits.total.value ?? 0
+      }
     });
   } catch (error) {
     res.statusCode = 500;
