@@ -6,6 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
+import GithubIcon from "@material-ui/icons/GitHub";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,7 +38,9 @@ export const AppHeader = (props) => {
           <Typography variant="h6" className={classes.title}>
             ElasticExemplar
           </Typography>
-          <Button color="inherit">Login</Button>
+          <IconButton edge="end" color="inherit" aria-label="github" href="https://github.com/dendihandian/elastic-exemplar" target="_blank">
+            <GithubIcon/>
+          </IconButton>
         </Toolbar>
       </AppBar>
     </div>

@@ -7,6 +7,7 @@ export const ProductList = () => {
   const [state, setState] = useState({
     products: [],
     total: 0,
+    page_size: 10,
   });
   const fetchData = async () => {
     const result = await apiClient.get("/api/products", {
@@ -22,8 +23,7 @@ export const ProductList = () => {
 
   useEffect(() => {
     fetchData();
-  }, [] //empty array helps to stop useEffect keeps looping
-  );
+  }, [/*empty array helps to stop useEffect for keeps looping*/]);
 
   return (
     <div style={{ padding: "0.5em" }}>

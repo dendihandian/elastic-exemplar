@@ -39,7 +39,7 @@ export default class Layout extends Component {
           open={this.state.showSideDrawer}
           closed={this.sideDrawerClosedHandler}
         />
-        <main>{this.props.children}</main>
+        <main style={{backgroundColor: "#f5f5f5"}}>{this.props.children}</main>
       </Aux>
     );
   }
